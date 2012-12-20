@@ -1,0 +1,7 @@
+This program should be used for gtk desktops meaning gnome or freedesktop, openbox probably...
+You can change the sound theme by simply choosing files for events and then all them will be saved in /.local directory, so it is supposed to be working like that
+But if not (s happens) you can move that directory into /usr/share/sounds and rename it to freedesktop then it will work more like for sure.
+there's another place /usr/local/share/sounds to move on, but youshould use $home/.local/share/sounds instead.
+to play sounds you will need gtk-play and actually python installed. to compile it simply use | python ./set* build | > | python ./set* install |
+there's an iverride of sounds in __custom directory but it is not listed this bug is avoided because of the wrong structure of index.theme file.
+so you should name your theme with 2 letters minimum and better way of using it is to save theme with pushing the @SAVE button
