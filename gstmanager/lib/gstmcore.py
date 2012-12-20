@@ -11,14 +11,17 @@ import gtk
 from gstmconsts import *
 
 def salvagetheme(location):
-    
+
     index = location+'/index.theme'
-    
+
+
+
+
     if not os.path.exists(index):
         return None
-    
+
     dic = {}
-    
+
     # load index.theme
     with open(index, 'r') as f:
         try:
@@ -28,25 +31,37 @@ def salvagetheme(location):
             name = config.get('Sound Theme', 'Name')
             dirs = config.get('Sound Theme', 'Directories').split(' ')
             for dir in dirs:
-                profile = config.get(dir, 'OutputProfile')
-                if profile == 'stereo':
-                    stereo = dir
-                    break
-                else:
-                    return None
-            for root, dirs, files in os.walk(location+'/'+stereo):
+             if len(dir) < 2 :
+                 return None
+             else:
+
+                  profile = config.get(dir, 'OutputProfile')
+
+
+                  if profile == 'stereo':
+                        stereo = dir
+                        break
+                  else:
+                        return None
+            for root,dirs,files in os.walk(location+'/'+stereo):
                 for file in files:
                     if file.split('.')[-1] in ('ogg', 'wav', 'oga', 'sound'):
                         id = ''.join(file.split('.')[:-1])
                         dic[id] = root+'/'+file
+                else:
+            	    break
+
         except Exception, e:
             dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
-            dialog.set_markup('An invalid sound theme is installed. Exit now.')
+            dialog.set_markup('An invalid sound theme is installed. Exit now. '+str(e)+ ' '+str(location))
             dialog.run()
             dialog.destroy()
             exit(1)
+
+
     return name, dic
-        
+
+
 def findthemes():
     if not os.path.exists(LOCAL_SOUND_DIR):
         os.mkdir(LOCAL_SOUND_DIR)
@@ -67,7 +82,7 @@ def removetheme(top=None):
                 os.rmdir(os.path.join(root, name))
         os.rmdir(top)
         return True
-        
+
     except OSError, e:
         print >>sys.stderr, 'Error while removing a theme:'+str(e)
         return False
@@ -170,7 +185,7 @@ def installtheme(filepath):
                     break
         else:
             return None
-        
+
         top = LOCAL_SOUND_DIR + name[:12] # remove '/index.theme'
 
         # extract

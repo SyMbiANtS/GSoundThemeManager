@@ -63,6 +63,9 @@ class GSoundThemeManager(object):
         self.allfilter.add_pattern('*')
         self.addsoundchooser(self['main_table'], MAIN_EVENT_SOUNDS)
         self.addsoundchooser(self['extra_table'], EXTRA_EVENT_SOUNDS)
+        self.addsoundchooser(self['sound_test_table'], SOUND_TEST_EVENT_SOUNDS)
+        self.addsoundchooser(self['service_table'], SERVICE_EVENT_SOUNDS)
+        self.addsoundchooser(self['warning_table'], WARN_EVENT_SOUNDS)
 
 
 
@@ -84,15 +87,15 @@ class GSoundThemeManager(object):
     def addsoundchooser(self, table, events):
         table.resize(len(events), 2)
         for i, event in enumerate(events):
-            
+
             if event is None:
                 sep = gtk.HSeparator()
                 table.attach(sep, 0, 3, i, i+1, yoptions=gtk.SHRINK)
                 continue
-            
+
             sound_id = event[0]
             label = event[1]
-            
+
             # Checkbutton
             checkbutton = gtk.CheckButton(label)
             checkbutton.connect('toggled', self.on_cb_toggled)
@@ -105,14 +108,14 @@ class GSoundThemeManager(object):
             fc.add_filter(self.allfilter)
             fc.set_filter(self.oggfilter)
             fc.set_sensitive(False)
-            
+
             # Preview Button
             preview = gtk.Button()
             icon = gtk.Image()
             icon.set_from_stock(gtk.STOCK_MEDIA_PLAY, gtk.ICON_SIZE_BUTTON)
             preview.set_image(icon)
             preview.connect('clicked', self.on_btn_preview_clicked)
-            
+
             # attach to table
             table.attach(checkbutton, 0, 1, i, i+1, yoptions=gtk.SHRINK)
             table.attach(fc, 1, 2, i, i+1, yoptions=gtk.SHRINK)
@@ -188,7 +191,7 @@ class GSoundThemeManager(object):
                     dialog.set_markup('Error while removing the old theme...:'+str(e))
                     dialog.run()
                     dialog.destroy()
-            
+
             self.do_with_cmb_safe(self.db.remove_theme, theme_id)
 
             self['cmb_themes'].set_active(0)
@@ -206,7 +209,7 @@ class GSoundThemeManager(object):
             fc.get_filename() or fc.set_current_folder(curfol)
 
         self.db.get_preview(sound_id).set_sensitive(bool(widget.get_filename()))
-        
+
         theme_id = self.db.get_current_theme_id()
         sound_id = self.db.get_sound_id(fc=widget)
         filaname = widget.get_filename()
@@ -215,7 +218,7 @@ class GSoundThemeManager(object):
                 self.do_with_cmb_safe(self.db.add_new_custom_theme, True, True)
             else:
                 self.db.set_path(theme_id, sound_id, filename)
-        
+
 
 
 
@@ -359,12 +362,12 @@ class GSoundThemeManager(object):
                 dialog.set_markup('Imported successfully!')
                 result = dialog.run()
                 dialog.destroy()
-                
+
                 theme_id = self.db._append_theme(*result)
                 self.db.select_cmb_by_theme_id(theme_id)
 
 
-         
+
 
     def gtk_main_quit(self, *args):
         if self.gconf.get(GCONF_CURRENT_THEME) == self.db.get_name(self.db.get_current_theme_id()).lower():

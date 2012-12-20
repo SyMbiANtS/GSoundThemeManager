@@ -13,7 +13,7 @@ class GSTMdata(object):
     id_name = {}
     id_dic = {}
     id_existance = {}
-    
+
     islocal_id = {}
     top_id = {}
     name_id = {}
@@ -154,7 +154,7 @@ class GSTMdata(object):
             if theme_id == orig_theme_id:
                 flag = True
                 prev = theme_id
- 
+
             if flag:
                 tmp = prev
                 prev = theme_id
@@ -183,7 +183,7 @@ class GSTMdata(object):
         self.id_existance.clear()
 
         self.theme_ids.remove(orig_theme_id)
-        for theme_id, islocal, top, name, dic, existance in themes:    
+        for theme_id, islocal, top, name, dic, existance in themes:
             self.islocal_id[islocal] = theme_id
             self.top_id[top] = theme_id
             self.name_id[name] = theme_id

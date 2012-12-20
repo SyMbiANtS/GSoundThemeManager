@@ -117,6 +117,8 @@
                     </child>
                   </object>
                 </child>
+
+                #main tab
                 <child type="tab">
                   <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
@@ -147,16 +149,131 @@
                     <property name="position">1</property>
                   </packing>
                 </child>
+
+#extra tab
                 <child type="tab">
                   <object class="GtkLabel" id="label3">
                     <property name="visible">True</property>
                     <property name="label" translatable="yes">Extra</property>
                   </object>
                   <packing>
-                    <property name="position">1</property>
+                    <property name="position">2</property>
                     <property name="tab_fill">False</property>
                   </packing>
                 </child>
+ #sound test tab
+
+
+                <child>
+                  <object class="GtkTable" id="sound_test_table">
+                    <property name="visible">True</property>
+                    <property name="border_width">6</property>
+                    <property name="n_columns">3</property>
+                    <property name="column_spacing">18</property>
+                    <property name="row_spacing">18</property>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="position">3</property>
+                  </packing>
+
+                </child>
+                 <child type="tab">
+                 <object class="GtkLabel" id="label_st">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Sound test</property>
+                  </object>
+                  <packing>
+                    <property name="position">3</property>
+                    <property name="tab_fill">False</property>
+                  </packing>
+                </child>
+
+ #service tab
+
+
+                <child>
+                  <object class="GtkTable" id="service_table">
+                    <property name="visible">True</property>
+                    <property name="border_width">6</property>
+                    <property name="n_columns">3</property>
+                    <property name="column_spacing">18</property>
+                    <property name="row_spacing">18</property>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="position">4</property>
+                  </packing>
+
+                </child>
+                 <child type="tab">
+                 <object class="GtkLabel" id="label_se">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Service</property>
+                  </object>
+                  <packing>
+                    <property name="position">4</property>
+                    <property name="tab_fill">False</property>
+                  </packing>
+                </child>
+
+ #warning tab
+
+
+                <child>
+                  <object class="GtkTable" id="warning_table">
+                    <property name="visible">True</property>
+                    <property name="border_width">6</property>
+                    <property name="n_columns">3</property>
+                    <property name="column_spacing">18</property>
+                    <property name="row_spacing">18</property>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="position">5</property>
+                  </packing>
+
+                </child>
+                 <child type="tab">
+                 <object class="GtkLabel" id="label_wa">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Warnings</property>
+                  </object>
+                  <packing>
+                    <property name="position">5</property>
+                    <property name="tab_fill">False</property>
+                  </packing>
+                </child>
+
+
+ #options tab
+
+
+
                 <child>
                   <object class="GtkVBox" id="vbox2">
                     <property name="visible">True</property>
@@ -177,26 +294,31 @@
                       </packing>
                     </child>
                   </object>
-                  <packing>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child type="tab">
+               </child>
+
+               <child type="tab">
+
                   <object class="GtkLabel" id="label4">
                     <property name="visible">True</property>
                     <property name="label" translatable="yes">Options</property>
                   </object>
+
                   <packing>
-                    <property name="position">2</property>
+                  <property name="position">6</property>
                     <property name="tab_fill">False</property>
                   </packing>
                 </child>
-              </object>
-              <packing>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
+
+
+
+</object>
+</child>
+
+
+
+
+            #end tabs starting buttons
+          <child>
               <object class="GtkHButtonBox" id="hbuttonbox2">
                 <property name="visible">True</property>
                 <property name="spacing">12</property>
