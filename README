@@ -5,3 +5,6 @@ there's another place /usr/local/share/sounds to move on, but youshould use $hom
 to play sounds you will need gtk-play and actually python installed. to compile it simply use | python ./set* build | > | python ./set* install |
 there's an iverride of sounds in __custom directory but it is not listed this bug is avoided because of the wrong structure of index.theme file.
 so you should name your theme with 2 letters minimum and better way of using it is to save theme with pushing the @SAVE button
+
+Many thanks to Yuichi Nishiwaki
+who actually created the program and did it great, so ai just can put few strings and interfaces into it so it was working just like that. 
